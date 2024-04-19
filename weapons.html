@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Pocket Paimon</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="weapons.css">
+    <link rel="icon" type="image/x-icon" href="logoIcon.png">
+  </head>
+
+  <body>
+    <nav>
+      <label class="logo"><img src="logo.png"></label>
+      <ul>
+        <li><a class="navLinks" href="index.html">Home</a></li>
+        <li><a class="navLinks" href="charList.html">Characters</a></li>
+        <li><a class="navLinks" id="active" href="weapons.html">Weapons</a></li>
+        <li><a class="navLinks" href="maps.html">Nations</a></li>
+        <li><a class="navLinks" href="index.html#SignUp">Sign Up</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="result">
+        <!--weapon list here-->
+      </section>
+    </main>
+
+    <footer>
+      <img src="logo.png">
+      <p>© 2024 Pocket Paimon by The Confused. All Rights Reserved</p>
+    </footer>
+
+
+    <script>
+      let state = [];
+
+      async function getWeaponList(){
+        const response = await fetch('https://genshin.jmp.blue/weapons');
+        const weaponList = await response.json();
+        return weaponList;
+      }
+
+      function renderWeaponList(weaponList){
+        let result = document.querySelector('#result');
+        let html='';
+
+        for (let weapon of weaponList){
+          html+=`
+          <a href="#" onclick="getWeaponInfo('${weapon}')">
+          <div class="card" onclick="document.getElementById('id01').style.display='block'">
+            <img src="https://genshin.jmp.blue/weapons/${weapon}/icon" alt="image of ${weapon}" style="width:100%">
+            <div class="container">
+              <p>${weapon}</p>
+            </div>
+          </div></a>
+
+          <div id="id01" class="w3-modal">
+              <div class="w3-modal-content">
+                <div class="w3-container">
+                  <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                  <div id="infoSection">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          `;
+        }
+        result.innerHTML = html;
+      }
+
+      async function getWeaponInfo(weapon){
+        const response = await fetch(`https://genshin.jmp.blue/weapons/${weapon}`);
+        const weaponInfo = await response.json();
+        renderWeaponInfo(weaponInfo, weapon);
+      }
+
+
+      function renderWeaponInfo(weaponInfo, weapon) {
+        let info = document.querySelector('#infoSection');
+        info.innerHTML = `
+          <h1>${weaponInfo.name}</h1>
+          <p>Type: ${weaponInfo.type}</p>
+          <p>Base Attack: ${weaponInfo.baseAttack}</p>
+          <br>
+          <p>Passive: ${weaponInfo.passiveDesc}</p>
+        `;
+      }
+
+      async function showAllWeapons() {
+        state = await getWeaponList();
+        renderWeaponList(state);
+      }
+
+      showAllWeapons();
+    </script>
+  </body>
+</html>

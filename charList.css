@@ -1,0 +1,217 @@
+@font-face { font-family: bebas neue; src: url('BebasNeue-Regular.ttf'); }
+@font-face { font-family: montserrat; src: url('Montserrat-Light.ttf'); }
+@font-face { font-family: gameria; src: url('GAMERIA.ttf'); }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 16px;
+  background-color: #39166a;
+}
+
+a {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  text-decoration: none;
+}
+
+
+nav{
+  background-image: linear-gradient(to bottom right, #301f47, #1f1230);
+  height: 80px;
+  width: 100%;
+  font-family: gameria;
+}
+label.logo{
+  color: white;
+  font-size: 35px;
+  line-height: 80px;
+  margin-left: 10vh;
+  font-weight: bold;
+}
+nav ul{
+  float: right;
+  margin-right: 20px;
+  font-family: bebas neue;
+}
+nav ul li{
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+.navLinks{
+  color: white;
+  padding: 7px 13px;
+  border-radius: 5px;
+}
+#active, .navLinks:hover{
+  background: #bc4bda;
+  transition: all 200ms ease-in;
+}
+@media (max-width: 952px){
+  label.logo{
+    font-size: 30px;
+    padding-left: 50px;
+  }
+  nav ul li .navLinks{
+    font-size: 16px;
+  }
+}
+@media (max-width: 858px){
+  ul{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #2c3e50;
+    top: 80px;
+    left: -100%;
+    text-align: center;
+    transition: all .5s;
+  }
+  nav ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li .navLinks{
+    font-size: 20px;
+  }
+  .navLinks:hover, #active{
+    background: none;
+    color: #bc4bda;
+  }
+}
+
+
+
+/*CHARACTER LIST*/
+section {
+  background-color: #39166a;
+}
+
+.list { 
+  background-image: linear-gradient(#301f47, #1f1230);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+  width: 40vw;
+  min-width: 200px;
+  height: 90vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-align: center;
+  padding: 20px;
+  margin-top: 10vh;
+  margin-left: 10vh;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+  transition: 0.3s;
+  margin: 10px;
+  border-radius: 10px;
+  width: 25%;
+  min-width: 50px;
+  display: inline-block;
+  background-color: #533195;
+  z-index: 2;
+  color: white;
+  position: relative;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(162, 49, 170, 0.2);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #333446;
+  z-index: -1;
+  border-radius: inherit;
+  transition: all 0.35s ease;
+}
+
+.card:hover::before {
+  transform: rotate(10deg);
+}
+
+.container {
+  padding: 2px 16px;
+  font-family: bebas neue;
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+.card:hover > img {
+  translate: 0 -5px;
+  transition: all 0.35s ease;
+}
+
+
+#charPortrait{
+  display: inline-block;
+}
+
+.selectChar {
+  height: 90vh;
+  max-width: 50vw;
+  padding-left: 10vw;
+  background-image: radial-gradient(farthest-corner at 60% 55%, #2d1155, #39166a, #39166a);
+}
+
+.charLink {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 20vw;
+  margin-top: 20vh;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: #333446;
+  color: white; 
+  font-family: bebas neue;
+}
+
+.charLink:hover {
+  background-color: #bc4bda;
+  box-shadow: 0 8px 16px 0 rgb(191, 96, 199, 0.2);
+  color: white;
+}
+
+
+/*footer css*/
+footer {
+  background-image: linear-gradient(to bottom right, #301f47, #1f1230);
+  height: 100px;
+  width: 100%;
+  padding-top: 15px;
+  margin-top: 80px;
+  text-align: center;
+}
+
+footer img{
+  height: 40px;
+}
+
+footer p{
+  font-family: bebas neue;
+  font-size: 12px;
+  color: #adadad;
+}

@@ -1,0 +1,180 @@
+@font-face { font-family: bebas neue; src: url('BebasNeue-Regular.ttf'); }
+@font-face { font-family: montserrat; src: url('Montserrat-Light.ttf'); }
+@font-face { font-family: gameria; src: url('GAMERIA.ttf'); }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+  background-color: #1f1230;
+  color: white;
+}
+
+a {
+  position: relative;
+  bottom: 45vh;
+  text-decoration: none;
+  padding: 8px 16px;
+  margin-top: 8vh;
+  margin-left: 8vh;
+  z-index: 5;
+}
+
+a:hover {
+  background-color: #bc4bda;
+  color: black;
+}
+
+.previous {
+  background-color: #333446;
+  border-radius: 10px;
+  color: white;
+}
+
+/* MAIN */
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 80%;
+}
+.skewed-bg {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  justify-content: right;
+  align-items: top;
+  transform: skewY(-20deg);
+  width: 100%;
+  height: 90vh;
+  margin-top: 140vh;
+  background-color: #1f1230;
+}
+.box {
+  transform: skewY(20deg);
+  width: 45vw;
+}
+h1 {
+  margin: 0;
+  padding-top: 18vh;
+  color: white;
+  font-size: 700%;
+  letter-spacing: 1px;
+  text-align: left;
+  font-family: bebas neue;
+}
+#title {
+  font-size: 200%;
+  color: white;
+  font-family: montserrat;
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 2.25rem;
+    padding-top: 8vh;
+  }
+  #title {
+    font-size: 1rem;
+  }
+  #container {
+    height: 50vh;
+    background-position: center bottom;
+    background-size: 150%;
+  }
+  .box {
+    transform: skewY(30deg);
+  }
+  .skewed-bg {
+    transform: skewY(-30deg);
+    height: 110vh;
+  }
+}
+
+/*desription section*/
+#descrip {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  padding-top: 10vh;
+  z-index: 2;
+}
+.gacha-portrait {
+  height: 120vh;
+  padding-left: 10vw;
+  max-width: 60vw;
+}
+.descripText {
+  padding-left: 5vw;
+  padding-right: 10vw;
+  padding-top: 20vh;
+  align-self: center;
+  justify-self: center;
+  font-size: 1.5vw;
+}
+.descripText h2, h3{
+  font-family: bebas neue;
+}
+.descripText p, table, h4, .talent p {
+  font-family: montserrat;
+}
+
+/*talent section*/
+#talentInfo {
+  position: relative;
+  height: 140vh;
+  padding-top: 40vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-bottom: 45vh;
+}
+.talent {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: #333446;
+  transition: 0.3s;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+}
+.talent:hover {
+  margin-left: 15px;
+  box-shadow: 0 8px 16px 0 rgb(224, 87, 234, 0.5);
+  transition: all 0.35s ease;
+}
+.talentImg {
+  height: 5vh;
+}
+#passive {
+  margin-bottom: 5vh;
+}
+
+/*footer css*/
+footer {
+  background-image: linear-gradient(to bottom right, #301f47, #1f1230);
+  height: 100px;
+  width: 100%;
+  padding-top: 15px;
+  text-align: center;
+}
+footer img {
+  height: 40px;
+}
+footer p {
+  font-family: bebas neue;
+  font-size: 12px;
+  color: #adadad;
+}

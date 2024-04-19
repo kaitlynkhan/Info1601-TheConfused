@@ -1,0 +1,153 @@
+@font-face { font-family: bebas neue; src: url('BebasNeue-Regular.ttf'); }
+@font-face { font-family: montserrat; src: url('Montserrat-Light.ttf'); }
+@font-face { font-family: gameria; src: url('GAMERIA.ttf'); }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  height: 100%;
+  font-size: 16px;
+  background-color: #39166a;
+}
+body {
+  height: 100%;
+}
+a {
+  text-decoration: none;
+}
+
+
+nav{
+  background-image: linear-gradient(to bottom right, #301f47, #1f1230);
+  height: 80px;
+  width: 100%;
+  font-family: gameria;
+}
+label.logo{
+  color: white;
+  font-size: 35px;
+  line-height: 80px;
+  margin-left: 10vh;
+  font-weight: bold;
+}
+nav ul{
+  float: right;
+  margin-right: 20px;
+  font-family: bebas neue;
+}
+nav ul li{
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+.navLinks{
+  color: white;
+  padding: 7px 13px;
+  border-radius: 5px;
+}
+#active, .navLinks:hover{
+  background: #bc4bda;
+  transition: all 200ms ease-in;
+}
+@media (max-width: 952px){
+  label.logo{
+    font-size: 30px;
+    padding-left: 50px;
+  }
+  nav ul li .navLinks{
+    font-size: 16px;
+  }
+}
+@media (max-width: 858px){
+  ul{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #2c3e50;
+    top: 80px;
+    left: -100%;
+    text-align: center;
+    transition: all .5s;
+  }
+  nav ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li .navLinks{
+    font-size: 20px;
+  }
+  .navLinks:hover, #active{
+    background: none;
+    color: #bc4bda;
+  }
+}
+
+/*nations css*/
+.parallax{
+  height: 80vh; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nationInfo {
+  height: 40vh;
+  background-color: #333446;
+  font-size: 1.5vw;
+  padding: 10vh;
+}
+
+.nationInfo h1 {
+  font-family: bebas neue;
+  text-align: center;
+  color: white;
+}
+
+.nationInfo p {
+  font-family: montserrat;
+  color: #adadad;
+}
+
+#monds{
+  background-image: url('nationImages/mondstat.jpeg');
+}
+
+#liyue{
+  background-image: url('nationImages/liyue.jpg');
+}
+
+#inazuma{
+  background-image: url('nationImages/inazuma.jpg');
+}
+
+#sumeru{
+  background-image: url('nationImages/sumeru.jpg');
+}
+
+#fonta{
+  background-image: url('nationImages/fontaine.png');
+}
+
+/*footer css*/
+footer {
+  background-image: linear-gradient(to bottom right, #301f47, #1f1230);
+  height: 100px;
+  width: 100%;
+  padding-top: 15px;
+  text-align: center;
+}
+
+footer img{
+  height: 40px;
+}
+
+footer p{
+  font-family: bebas neue;
+  font-size: 12px;
+  color: #adadad;
+}

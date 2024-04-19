@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Pocket Paimon</title>
+    <link rel="stylesheet" type="text/css" href="character-details.css">
+    <link rel="icon" type="image/x-icon" href="logoIcon.png">
+  </head>
+
+  <!-- Menu Icon -->
+  <div class="menuIcon">
+   
+  </div>
+
+  <body>
+    <main id="result">
+      <!--character details here-->
+    </main>
+    
+    <!-- Footer section -->
+    <footer>
+      <img src="logo.png">
+      <p>© 2024 Pocket Paimon by The Confused. <br>
+        All Rights Reserved.</p>
+    </footer>
+  </body>
+
+
+  <script>
+    let menuIcon = document.querySelector('.menuIcon');
+     let nav = document.querySelector('.overlay-menu');
+
+     menuIcon.addEventListener('click', () => {
+         if (nav.style.transform != 'translateX(0%)') {
+             nav.style.transform = 'translateX(0%)';
+             nav.style.transition = 'transform 0.2s ease-out';
+         } else { 
+             nav.style.transform = 'translateX(-100%)';
+             nav.style.transition = 'transform 0.2s ease-out';
+         }
+     });
+
+     // Toggle Menu Icon ========================================
+     let toggleIcon = document.querySelector('.menuIcon');
+
+     toggleIcon.addEventListener('click', () => {
+         if (toggleIcon.className != 'menuIcon toggle') {
+             toggleIcon.className += ' toggle';
+         } else {
+             toggleIcon.className = 'menuIcon';
+         }
+     });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const characterName = urlParams.get('character');
+
+    // Render character details
+    function renderCharDetails(details, characterName) {
+      const charDetails = document.querySelector('#result');
+      charDetails.innerHTML = `
+        <div id="container" style="background-image: url('https://genshin.jmp.blue/characters/${characterName}/gacha-splash');">
+        <a href="charList.html" class="previous round">&#8249;</a>
+        <section class="skewed-bg">
+          <div class="box">
+            <h1>${details.name}</h1>
+            <p id="title">${details.title}</p>
+          </div>
+        </section>
+    </div>
+
+    <section id="descrip" >
+      <div>
+        <img class="gacha-portrait" src="https://genshin.jmp.blue/characters/${characterName}/portrait" alt="${details.name}">
+      </div>
+
+      <div class="descripText">
+        <h2>${details.name}: ${details.title}</h2>
+        <p>${details.description}</p>
+        <br>
+        <table>
+          <tr>
+            <td>Vision: ${details.vision}</td>
+            <td>&ensp; Weapon: ${details.weapon}</td>
+          </tr>
+          <tr>
+            <td>Nation: ${details.nation}</td>
+            <td>&ensp; Affiliation: ${details.affiliation}</td>
+          </tr>
+          <tr>
+            <td>Birthday: ${details.birthday}</td>
+            <td>&ensp; Constellation: ${details.constellation}</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section id="talentInfo">
+      <div class="talent">
+        <img src="https://genshin.jmp.blue/characters/${characterName}/talent-na" class="talentImg">
+        <h3>Normal Attack</h3>
+        <h4>${details.skillTalents[0].name}</h4>
+        <p>${details.skillTalents[0].description}</p>
+      </div>
+      <div class="talent">
+        <img src="https://genshin.jmp.blue/characters/${characterName}/talent-skill" class="talentImg">
+        <h3>Elemental Skill</h3>
+        <h4>${details.skillTalents[1].name}</h3>
+        <p>${details.skillTalents[1].description}</p>
+      </div>
+      <div class="talent">
+        <img src="https://genshin.jmp.blue/characters/${characterName}/talent-burst" class="talentImg">
+        <h3>Elemental Burst</h3>
+        <h4>${details.skillTalents[2].name}</h4>
+        <p>${details.skillTalents[2].description}</p>
+      </div>
+      <div class="talent" id="passive">
+        <img src="https://genshin.jmp.blue/characters/${characterName}/talent-passive-0" class="talentImg">
+        <h3>Passive:</h3>
+        <h4>${details.passiveTalents[2].name}</h4>
+        <p>${details.passiveTalents[2].description}</p>
+      </div>
+    </section>
+      `;
+    }
+
+    async function getCharDetails(characterName) {
+        const response = await fetch(`https://genshin.jmp.blue/characters/${characterName}`);
+        const details = await response.json();
+        renderCharDetails(details, characterName);
+    }
+
+    getCharDetails(characterName);
+
+  </script>
+</html>
+
